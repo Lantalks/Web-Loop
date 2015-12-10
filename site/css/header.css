@@ -1,0 +1,370 @@
+header {
+  color: #00f500;
+  width: 100%;
+  border-bottom: 1px solid #323232;
+}
+header .contain-to-grid.barra-primaria {
+  background: #000;
+}
+header .contain-to-grid.barra-secundaria {
+  background: #323232;
+  text-transform: uppercase;
+}
+header .top-bar-section li.reproductor:not(.has-form) a:not(.button) {
+  background-color: lime;
+  color: #000;
+}
+header .top-bar-section ul#principal li {
+  background-color: transparent;
+}
+header .top-bar-section ul#principal li > a {
+  background-color: transparent;
+  font-family: "Helvetica Neue Condensed";
+  font-size: 16px;
+  color: lime;
+}
+header .top-bar-section ul#secundario li a {
+  text-transform: uppercase;
+  font-family: "Helvetica";
+  font-size: 16px;
+  color: lime;
+}
+header .top-bar-section ul li:hover.reproductor:not(.has-form) > a {
+  background-color: #000;
+  color: lime;
+}
+header li.reproductor, header li.reproductor a {
+  background-color: lime;
+}
+header #brand {
+  display: inline-block;
+  padding: 10px;
+  margin-top: 8px;
+  vertical-align: middle;
+  width: 130px;
+  height: 30px;
+  background-image: url(../img/brand.png);
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  cursor: pointer;
+}
+@media all and (max-width: 639px) {
+  header #brand {
+    display: inline-block;
+  }
+}
+header .brand-menu #menu-responsive:hover nav#principal ul {
+  display: block;
+}
+header .brand-menu {
+  display: inline-block;
+  font-family: "Helvetica Neue Condensed";
+  vertical-align: middle;
+}
+@media all and (max-width: 639px) {
+  header .brand-menu {
+    display: block;
+    text-align: center;
+  }
+}
+header .brand-menu #brand {
+  display: inline-block;
+  padding: 10px;
+  vertical-align: middle;
+  width: 130px;
+  height: 30px;
+  background-image: url(../img/brand.png);
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  cursor: pointer;
+}
+@media all and (max-width: 639px) {
+  header .brand-menu #brand {
+    display: inline-block;
+  }
+}
+header .brand-menu #menu-responsive {
+  display: none;
+  vertical-align: middle;
+  padding: 5px;
+}
+@media all and (max-width: 639px) {
+  header .brand-menu #menu-responsive {
+    display: inline-block;
+  }
+}
+header nav {
+  display: block;
+  color: #00f500;
+}
+header nav#principal {
+  background-color: black;
+}
+header nav#principal ul {
+  display: inline-block;
+  cursor: pointer;
+  float: right;
+}
+@media all and (max-width: 639px) {
+  header nav#principal ul {
+    display: none;
+    text-align: center;
+    float: none;
+    width: 100%;
+  }
+}
+header nav#principal ul li {
+  display: inline-block;
+  padding: 15px;
+  font-family: "Helvetica Neue Condensed";
+}
+@media all and (max-width: 639px) {
+  header nav#principal ul li {
+    width: 43%;
+  }
+}
+@media all and (max-width: 360px) {
+  header nav#principal ul li {
+    display: block;
+    width: inherit;
+    padding: 20px 0;
+  }
+}
+header nav#principal ul li:hover {
+  background-color: lime;
+  color: #000;
+}
+header nav#secundario {
+  background-color: #323232;
+}
+header nav#secundario ul {
+  display: inline-block;
+  cursor: pointer;
+  text-transform: uppercase;
+}
+header nav#secundario ul#Spotify {
+  float: right;
+}
+@media all and (max-width: 639px) {
+  header nav#secundario ul#Spotify {
+    float: none;
+  }
+}
+@media all and (max-width: 639px) {
+  header nav#secundario ul {
+    width: 100%;
+  }
+}
+header nav#secundario ul li {
+  display: inline-block;
+  margin: 0px;
+  vertical-align: top;
+}
+header nav#secundario ul li ul {
+  position: absolute;
+  display: none;
+  background-color: #c8c8c8;
+}
+@media all and (max-width: 639px) {
+  header nav#secundario ul li ul {
+    position: static;
+    margin: 0;
+  }
+}
+header nav#secundario ul li ul#programas {
+  color: #000;
+}
+header nav#secundario ul li ul#programas li {
+  width: 150px;
+  padding: 10px;
+}
+header nav#secundario ul li ul#programas li:hover ul {
+  display: inline-block;
+}
+header nav#secundario ul li ul#programas li ul {
+  float: left;
+  position: absolute;
+  display: none;
+  top: 0;
+  left: 100%;
+  width: 500px;
+}
+header nav#secundario ul li ul#programas li ul li#descripcion {
+  background-color: transparent !important;
+  color: #000 !important;
+}
+header nav#secundario ul li ul#programas .opcion {
+  padding: 0px;
+}
+header nav#secundario ul li ul li {
+  display: block;
+  padding: 15px 30px;
+  text-transform: none;
+}
+@media all and (max-width: 639px) {
+  header nav#secundario ul li ul li {
+    width: calc(100% - 60px);
+  }
+}
+header nav#secundario ul li ul li:hover {
+  background-color: #000;
+  color: #DDD;
+}
+header nav#secundario ul li#reproductor ul {
+  background-color: #00f500;
+  color: #000;
+}
+header nav#secundario ul li#reproductor ul li {
+  font-family: "Helvetica Neue Condensed";
+  padding: 5px 28px;
+  border-top: 2px solid #000;
+}
+header nav#secundario ul li#reproductor ul li:first, header nav#secundario ul li#reproductor ul li:nth-child(2) {
+  border-top: none;
+}
+header nav#secundario ul li#reproductor ul li .icono {
+  background-image: url(../img/iconos-players.png);
+  background-repeat: no-repeat;
+  display: inline-block;
+  vertical-align: middle;
+  width: 37px;
+  height: 37px;
+}
+header nav#secundario ul li#reproductor ul li .icono#winamp {
+  background-position: -10px, 0px;
+}
+header nav#secundario ul li#reproductor ul li .icono#wmp {
+  background-position: -50px, 0px;
+}
+header nav#secundario ul li#reproductor ul li .icono#itunes {
+  background-position: -90px, 0px;
+}
+header nav#secundario ul li#reproductor ul li:hover {
+  background-color: #000;
+  color: #00f500;
+}
+header nav#secundario ul li#Spotify ul {
+  position: relative;
+  background-color: #000;
+  color: #FFF;
+}
+header nav#secundario ul li#Spotify ul li {
+  font-family: "Helvetica Neue Condensed";
+}
+header nav#secundario ul li#Spotify ul li:hover {
+  background-color: #FFF;
+  color: #000;
+}
+header nav#secundario ul li:hover ul {
+  display: block;
+}
+header nav#secundario ul li .opcion {
+  padding: 15px 30px;
+}
+header nav#secundario ul li .opcion:hover {
+  background-color: rgba(0, 0, 0, 0.5);
+}
+header nav#secundario ul li .opcion#programas {
+  width: 110px;
+}
+header nav#secundario ul li .opcion#reproductor {
+  background-color: #00f500;
+  color: #141414;
+}
+header nav#secundario ul li .opcion#Spotify {
+  background-image: url(../img/spotify.png);
+  background-position: center;
+  background-repeat: no-repeat;
+  width: 192px;
+  height: 50px;
+  vertical-align: top;
+  float: right;
+  z-index: 10;
+}
+@media all and (max-width: 639px) {
+  header nav#secundario ul li .opcion#Spotify {
+    width: 100%;
+    float: none;
+    display: block;
+  }
+}
+header nav#secundario ul li .opcion#Spotify ul {
+  background-color: #141414;
+}
+@media all and (max-width: 639px) {
+  header nav#secundario ul li {
+    display: block;
+  }
+}
+header nav#secundario ul li #Spotify {
+  width: 192px;
+  height: 50px;
+  vertical-align: top;
+  float: right;
+  padding: inherit;
+}
+@media all and (max-width: 639px) {
+  header nav#secundario ul li #Spotify {
+    width: 100%;
+    float: none;
+    display: block;
+  }
+}
+header nav#secundario ul #Spotify {
+  width: 192px;
+  height: 50px;
+  vertical-align: top;
+  float: right;
+  padding: inherit;
+}
+@media all and (max-width: 639px) {
+  header nav#secundario ul #Spotify {
+    width: 100%;
+    float: none;
+    display: block;
+  }
+}
+header nav#secundario ul #Spotify-back {
+  vertical-align: top;
+  float: right;
+}
+@media all and (max-width: 639px) {
+  header nav#secundario ul #Spotify-back {
+    width: 100%;
+    float: none;
+    display: block;
+  }
+}
+header nav#secundario ul #Spotify-back:hover ul {
+  display: block;
+}
+@media all and (max-width: 639px) {
+  header nav#secundario ul #Spotify-back:hover ul {
+    height: auto;
+  }
+}
+header nav#secundario ul #Spotify-back ul {
+  text-transform: none;
+  position: absolute;
+  margin-top: 50px;
+  margin-left: 40px;
+  background-color: #c8c8c8;
+  display: none;
+}
+@media all and (max-width: 639px) {
+  header nav#secundario ul #Spotify-back ul {
+    width: 100%;
+    position: inherit;
+    margin: 0;
+  }
+}
+header nav#secundario ul #Spotify-back ul li {
+  display: block;
+}
+header nav#secundario ul #Spotify-back ul li#titulo:hover {
+  background-color: inherit;
+}
+
+/*# sourceMappingURL=header.css.map */

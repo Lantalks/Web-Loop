@@ -1,0 +1,17 @@
+section#redes-sociales .red {
+  display: inline-block;
+  vertical-align: top;
+  width: 47.5%;
+  height: 625px;
+  background-color: rgba(0, 0, 0, 0.5);
+  margin: 10px 5px;
+}
+@media all and (max-width: 639px) {
+  section#redes-sociales .red {
+    display: block;
+    width: 100%;
+    margin: 0;
+  }
+}
+
+/*# sourceMappingURL=inicio.css.map */

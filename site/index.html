@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Loop Radio</title>
+	<meta http-equiv="Content-Type" content="text/html" charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta name="theme-color" content="rgb(0, 175, 255)" />
+	<link rel="icon" href="img/icon.jpg"> 
+	<link rel="stylesheet" type="text/css" href="css/foundation.css">
+	<link rel="stylesheet" type="text/css" href="css/fonts.css">
+	<link rel="stylesheet" type="text/css" href="css/general.css">
+	<link rel="stylesheet" type="text/css" href="css/inicio.css">
+	<link rel="stylesheet" type="text/css" href="css/normalize.css">
+	<link rel="stylesheet" type="text/css" href="css/font-awesome.min.css">
+	<link rel="stylesheet" type="text/css" href="css/carga.css">
+	<link rel="stylesheet" type="text/css" href="css/header.css">
+	<script type="text/javascript" src="js/jquery-2.1.4.min.js"></script>
+	<script type="text/javascript" src="js/foundation.min.js"></script>
+	<script type="text/javascript" src="js/modernizr.js"></script>
+	<script type="text/javascript" src="js/papaparse.min.js"></script>
+	<script src="//localhost:35729/livereload.js"></script>
+	<script type="text/javascript" src="js/scripts.js"></script>
+	<script type="text/javascript">
+		(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+		(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+		m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+		})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+		ga('create', 'UA-66952452-1', 'auto');
+		ga('send', 'pageview');
+	</script>
+	<script type="text/javascript">
+		var responsive = true; 
+		var menuResponsive = function(){
+			if (responsive) {
+				$('#menu-responsive').css('background-color', 'rgb(0, 255, 0)').css('color', '#000'); 
+				$("ul#nav-principal").css('display', 'block'); 
+				responsive = false; 
+			}
+			else{
+				$('#menu-responsive').css('background-color', 'inherit').css('color', 'inherit'); 
+				$("ul#nav-principal").css('display', 'none'); 
+				responsive = true; 
+			};
+		}
+	</script>
+</head>
+<body>
+	<!-- Contenido de las secciones -->
+	<div id="seccion-programas" class="reveal-modal" data-reveal>
+		<h1>Programa</h1>
+		<section id="informacion">
+		</section>
+		<span>Escuchar todos los programas en SoundCloud</span>
+		<a class="close-reveal-modal">&#215;</a>
+	</div>
+	<!-- Contenido de las secciones -->
+	<div id="seccion-ext" class="reveal-modal" data-reveal>
+		<section id="modal-externo">
+			Cargando...
+		</section>
+		<a class="close-reveal-modal">&#215;</a>
+	</div>
+	<header>
+		<div class="contain-to-grid barra-primaria">
+			<nav class="top-bar transparente" data-topbar role="navigation">
+				<ul class="title-area">
+					<li id="inicio" class="name" style="vertical-align: middle;">
+						<div id="brand"></div>
+					</li>
+					<li class="toggle-topbar menu-icon"><a href="#"><span>Menu principal</span></a></li>
+				</ul>
+				<section class="top-bar-section">
+					<ul class="right" id="principal">
+						<li id="programacion"><a href="#" data-reveal-id="seccion-ext">Programacion</a></li>
+						<li id="ranking"><a href="#" data-reveal-id="seccion-ext">Ranking</a></li>
+						<li id="lantalks"><a href="#" data-reveal-id="seccion-ext">Lantalks</a></li>
+						<li id="contacto"><a href="#" data-reveal-id="seccion-ext">Contacto</a></li>
+					</ul>
+				</section>
+			</nav>
+		</div>
+		<div class="contain-to-grid barra-secundaria">
+			<nav class="top-bar" data-topbar role="navigation">
+				<ul class="title-area">
+					<li class="name"></li>
+					<li class="toggle-topbar menu-icon"><a href="#"><span>Opciones de la radio</span></a></li>
+				</ul>
+
+				<section class="top-bar-section">
+					<!-- Seccion derecha-->
+					<ul class="right">
+						<li class="has-dropdown">
+							<a href="#"><img src="img/spotify.png" style="max-height: 46px;"/></a>
+							<ul class="dropdown">
+								<li><a href="#">Escuchar Loop Playlist</a></li>
+								<li><a href="#">Escuchar Loop Black</a></li>
+								<li><a href="#">Escuchar Looptrónica</a></li>
+							</ul>
+						</li>
+					</ul>
+
+					<!-- Seccion izquierda -->
+					<ul class="left">
+						<li class="has-dropdown">
+							<a href="#">Programas</a>
+							<ul class="dropdown">
+								<li><a href="#" data-reveal-id="seccion-programas">Fuera de Joda</a></li>
+								<li><a href="#" data-reveal-id="seccion-programas">Sonido Planeta</a></li>
+							</ul>
+						</li>
+						<li class="reproductor"><a href="#">En tu reproductor</a></li>
+					</ul>
+				</section>
+			</nav>
+		</div>
+	</header>
+	<main id="reproductor">
+		<div class="encuadre">
+			<div style="padding-top: 20px; padding-bottom: 20px;"><center><div class="caja-carga"><div class="circulo-interno"></div><div class="circulo-externo"></div></div><div>Cargando...</div></center></div>
+		</div>
+	</main>
+	<main id="contenido">
+		<div class="encuadre">
+			<div style="padding-top: 20px; padding-bottom: 20px;"><center><div class="caja-carga"><div class="circulo-interno"></div><div class="circulo-externo"></div></div><div>Cargando...</div></center></div>
+		</div>
+	</main>
+</body>
+<script>
+	$(document).foundation();
+</script>
+<footer>
+	<div class="contain-to-grid" style="background-color: transparent;">
+		<div class="row">
+			<div class="small-12 medium-4 columns" style="vertical-align: middle;"><img src="img/brand-footer.png" style="max-height: 175px;"/></div>
+			<div class="smal-12 medium-8 columns" style="vertical-align: middle;">
+				<p>Loop Radio es una emisora perteneciente a: </p>
+				<p><b>Loop Radio Argentina</b> en sociedad con <b>Lantalks WebMedia</b>. </p>
+				<br />
+				<p>Copyright 2015 - Lantalks WebMedia - Santa Fe, Argentina. </p>
+			</div>
+		</div>
+	</div>
+	<!--<div class="encuadre">
+	<div id=""></div>
+	<p>Loop Radio es una emisora perteneciente a: Loop Radio Argentina en sociedad con Lantalks WebMedia. </p>
+	<p>Copyright 2015 - Lantalks WebMedia - Santa Fe, Argentina. </p>
+	</div>-->
+</footer>
+</html>

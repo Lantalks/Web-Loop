@@ -1,0 +1,112 @@
+<style type="text/css">
+	#playlist-offline{
+		display: none; 
+		height: 25px; 
+		width: 100%; 
+		background-color: #FFF; 
+	}
+	.controles .boton{
+		display: inline-block;
+		margin: 10px 5px; 
+		padding: 15px 0px; 
+		width: 55px; 
+		background-color: #000; 
+		border: 2px solid rgb(0, 255, 0); 
+		border-radius: 100%; 
+	}
+		.controles .boton i {
+			color: rgb(0, 255, 0); 
+		}
+		.controles .boton.activo{
+			background-color: rgb(0, 255, 0);
+		}
+		.controles .boton.activo i {
+			color: #000; 
+		}
+	.controles .boton.chico{
+		display: inline-block;
+		margin: 10px 5px; 
+		padding: 5px 0px; 
+		width: 37px;
+		background-color: #000; 
+		border: 2px solid rgb(0, 255, 0); 
+		border-radius: 100%; 
+	}
+		.controles .boton.chico i {
+			color: rgb(0, 255, 0); 
+		}
+		.controles .boton.chico.activo{
+			background-color: rgb(0, 255, 0);
+		}
+		.controles .boton.chico.activo i {
+			color: #000; 
+		}
+</style>
+<script type="text/javascript">
+	var urlRadio = 'http://radios.lantalks.com:8000/loop'; 
+	var controlPlayerDisplay = ""; 
+
+		var controlPlayer = function (id, onclick, iclass) {
+			controlPlayerDisplay += '<div class="boton" id="'+id+'" onclick="'+onclick+'""><i class="fa '+iclass+' fa-lg"></i></div>'; 
+			$('.controles').html(controlPlayerDisplay); 
+		}
+		var controlPlayerSmall = function (id, onclick, iclass) {
+			controlPlayerDisplay += '<div class="boton chico" id="'+id+'" onclick="'+onclick+'""><i class="fa '+iclass+' fa-lg"></i></div>'; 
+			$('.controles').html(controlPlayerDisplay); 
+		}
+
+		var player = function(accion) {
+			if (accion === "play") {
+				$('.boton#reproducir').addClass('activo'); 
+				$('.boton#pausa').removeClass('activo'); 
+				
+				$('p#listening').html('Cargando transmisión...'); 
+
+				$('.controles').html(''); 
+
+				$.ajax({
+					url: urlRadio,
+					cache: false
+				}).done(function() {
+					console.log('si'); 
+					//streamingRadio.setAttribute('src', urlRadio); 
+					//streamingRadio.setAttribute('id', 'streaming-loop'); 
+					//streamingRadio.play();
+					//controlPlayer('reproducir', "player('play')", "fa-play"); 
+					$('audio#streaming-loop').play(); 
+					$('p#listening').html('<b>Estás escuchando: </b><span id="programa-actual"></span>'); 
+					$('span#programa-actual').html('Loop Radio. '); 
+					controlPlayer('pausa', "player('pause')", "fa-pause"); 
+					controlPlayerSmall('sin-audio', "player('mute')", "fa-volume-off"); 
+					controlPlayerSmall('subir-volumen', "player('volumeup')", "fa-volume-up"); 
+					controlPlayerSmall('bajar-volumen', "player('volumedown')", "fa-volume-down"); 
+				}).error(function() {
+					console.log('error'); 
+					document.getElementById('streaming-loop').play(); 
+					controlPlayerDisplay = ""; 
+					controlPlayer('recargar', "player('play')", "fa-refresh"); 
+					$('p#listening').html('Ocurrió un error al cargar la transmisión. Intentalo de nuevo más tarde.'); 
+				}); 
+			} else if (accion === "pause") {
+				document.getElementById('streaming-loop').pause();
+				controlPlayerDisplay = ""; 
+				controlPlayer('reproducir', "player('play')", "fa-play"); 
+				$('.boton#reproducir').removeClass('activo'); 
+				$('.boton#pausa').addClass('activo'); 
+			};
+		}; 
+</script>
+<div class="row text-center">
+	<div class="medium-12 column">
+		<h1 style="color: #FFF">Escuchanos en vivo</h1>
+		<p id="listening"><b>Tocá en Play para escucharnos. </p>
+	</div>
+	<audio id="streaming-loop" preload="auto" controls>
+		<source src="http://radios.lantalks.com:8000/rloop" type="audio/mpeg">
+		Para escuchar la radio tendras que actualizar el navegador. 
+	</audio>
+	<div class="controles" style="padding-bottom: 20px;">
+		<div class="boton" id="reproducir" onclick="player('play')"><i class="fa fa-play fa-lg"></i></div>
+		<div class="boton" id="pausa" onclick="player('pause')"><i class="fa fa-pause fa-lg"></i></div>
+	</div>
+</div>

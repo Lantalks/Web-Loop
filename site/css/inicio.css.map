@@ -1,0 +1,7 @@
+{
+"version": 3,
+"mappings": "AACC,2BAAM;EACL,OAAO,EAAE,YAAY;EACrB,cAAc,EAAE,GAAG;EACnB,KAAK,EAAE,KAAK;EACZ,MAAM,EAAE,KAAK;EACb,gBAAgB,EAAE,kBAAkB;EACpC,MAAM,EAAE,QAAQ;;AAChB,iCAAiC;EAPlC,2BAAM;IAO6B,OAAO,EAAE,KAAK;IAAE,KAAK,EAAE,IAAI;IAAE,MAAM,EAAE,CAAC",
+"sources": ["../sass/inicio.scss"],
+"names": [],
+"file": "inicio.css"
+}

@@ -1,0 +1,79 @@
+<!doctype html>
+<style type="text/css">
+	.contenedor-tabla#ranking{
+		overflow-x: scroll; 
+	}
+	.contenedor-tabla .fila.principal{
+		background-color: rgb(0, 255, 0); 
+		color: #000; 
+		font-weight: bold;
+	}
+	.contenedor-tabla .fila.par{
+		background-color: rgba(0, 0, 0, 0.75); 
+		color: #FFF; 
+	}
+	.contenedor-tabla .fila.inpar{
+		background-color: rgba(255, 255, 255, 0.75); 
+		color: #000; 
+	}
+	.contenedor-tabla .celda{
+		display: inline-block; 
+		width: 75px;
+		padding: 10px 20px; 
+	}
+		.contenedor-tabla .celda.puesto{
+			text-align: center;
+		}
+		.contenedor-tabla .celda.cancion, 
+		.contenedor-tabla .celda.artista{
+			width: 300px;
+		}
+</style>
+<script type="text/javascript" src="js/papaparse.min.js"></script>
+<script type="text/javascript">
+	Papa.parse("../datos/ranking.csv", {
+		download: true, 
+		skipEmptyLines: true, 
+		complete: function(results) {
+			console.log(results);
+			//$.each(results.data, function(i, el) {
+			//	var row = $("<tr/>");
+			//	//row.append($("<td/>").text(i));
+			//	row.append($("<td/>"));
+			//	$.each(el, function(j, cell) {
+			//		if (cell !== "")
+			//			row.append($("<td/>").text(cell));
+			//	});
+			//	$("#results tbody").append(row);
+			//});
+			$.each(results.data, function(i, el) {
+				var row = $("<tr/>");
+				row.append($("<div class='celda puesto'>").text(i+1));
+				row.append($("<td/>"));
+				$.each(el, function(j, cell) {
+					if (cell !== "")
+						row.append($("<div class='celda cancion'>").text(cell));
+				});
+				$("section#ranking .encuadre .contenedor-tabla#ranking #csv-ranking").append(row);
+			});
+		}
+	});
+</script>
+<section id="ranking">
+	<div class="encuadre">
+		<h1>Ranking Loop Radio</h1>
+		<div class="contenedor-tabla" id="ranking">
+			<div style="width: 800px;">
+				<div class="fila principal">
+					<div class="celda puesto">Puesto N°</div><div class="celda cancion">Cancion</div><div class="celda artista">Artista</div>
+				</div>
+				<div id="csv-ranking">
+				</div>
+			</div>
+		</div>
+	</div>
+</section>
+<table id="results">
+	<tbody>
+	</tbody>
+</table>
