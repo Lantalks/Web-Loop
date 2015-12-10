@@ -2,6 +2,8 @@
 Repositorio del sitio web del medio "Loop Radio", perteneciente a Lantalks WebMedia. 
 
 # Changelog - v1 
+## v1.0.3 
+* Adición de release tag. 
 ## v1.0.2 
 * Modificado "README.md". 
 
