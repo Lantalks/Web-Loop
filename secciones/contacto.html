@@ -1,0 +1,25 @@
+<!--<link rel="stylesheet" type="text/css" href="css/contacto.css">-->
+<section id="contacto">
+	<h1>Contactate con nosotros</h1>
+	<p>Llena el formulario y nos pondremos en contacto con vos.</p>
+	<p>Todos los campos son obligatorios.</p>
+	<form id="correo" name="contacto">
+		<div class="row">
+			<div class="large-12 columns">
+				<input type="text" id="nombre" placeholder="Nombre y apellido" required>
+			</div>
+		</div>
+		<div class="row">
+			<div class="large-12 columns">
+				<input type="email" id="correo" placeholder="Correo electrónico" required>
+			</div>
+		</div>
+		<div class="row">
+			<div class="large-12 columns">
+				<label><textarea id="mensaje" rows="3" placeholder="Tu mensaje" required></textarea></label>
+			</div>
+		</div>
+		<br />
+		<div id="enviarMensaje" class="button" onClick="EnviarMensaje()" style="margin-bottom: 10px;">¡Enviar mensaje!</div>
+	</form>
+</section>

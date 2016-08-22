@@ -1,0 +1,20 @@
+@font-face {
+  font-family: "Helvetica";
+  font-weight: normal;
+  font-style: normal;
+  src: url("../fonts/helvetica/Helvetica.ttf") format("truetype"); }
+@font-face {
+  font-family: "Helvetica Neue Condensed";
+  font-weight: normal;
+  font-style: normal;
+  src: url("../fonts/helvetica/HelveticaNeue-CondensedBold.otf") format("opentype"); }
+@font-face {
+  font-family: "Open Sans";
+  font-font-weight: normal;
+  font-font-style: normal;
+  src: url("../fonts/open-sans/OpenSans-Regular.ttf") format("truetype"); }
+@font-face {
+  font-family: "Open Sans Light";
+  font-font-weight: normal;
+  font-font-style: normal;
+  src: url("../fonts/open-sans/OpenSans-Light.ttf") format("truetype"); }

@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Loop Radio</title>
+	<meta http-equiv="Content-Type" content="text/html" charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta name="theme-color" content="rgb(0, 175, 255)" />
+	<link rel="icon" href="img/icon.png"> 
+	<link rel="stylesheet" type="text/css" href="css/foundation.css">
+	<link rel="stylesheet" type="text/css" href="css/fonts.css">
+	<link rel="stylesheet" type="text/css" href="css/general.css">
+	<link rel="stylesheet" type="text/css" href="css/inicio.css">
+	<link rel="stylesheet" type="text/css" href="css/normalize.css">
+	<link rel="stylesheet" type="text/css" href="css/font-awesome.min.css">
+	<link rel="stylesheet" type="text/css" href="css/carga.css">
+	<link rel="stylesheet" type="text/css" href="css/header.css">
+	<link rel="stylesheet" type="text/css" href="css/player.css">
+	<script type="text/javascript" src="js/jquery-2.1.4.min.js"></script>
+	<script type="text/javascript" src="js/foundation.min.js"></script>
+	<script type="text/javascript" src="js/modernizr.js"></script>
+	<script type="text/javascript" src="js/papaparse.min.js"></script>
+	<script type="text/javascript" src="widgets/js/lantalks-inforadios.js"></script>
+	<!--<script src="//localhost:35729/livereload.js"></script>-->
+	<script type="text/javascript" src="js/scripts.js"></script>
+	<script type="text/javascript" src="js/correo.js"></script>
+	<script type="text/javascript">
+		
+	var streamingURL = 'http://sum2.lantalkswebmedia.xyz/loop'; 
+	var streamingdata = 'http://sum2.lantalkswebmedia.xyz:8082'; 
+
+	</script>
+	<script type="text/javascript">
+		(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+		(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+		m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+		})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+		ga('create', 'UA-66952452-1', 'auto');
+		ga('send', 'pageview');
+
+		var iconPush = 'img/icon.png'; 
+
+		var notifications = ''; 
+
+		var estadoRadio = ""; 
+		var temaActual = ""; 
+		var temaStored = ""; 
+
+		var pushNotifications = function(){
+			if (temaActual !== temaStored) { 
+				temaStored = temaActual; 
+				var options = {
+					body: temaStored,
+					icon: iconPush
+				};
+				 
+				var notif = new Notification("Ahora suena", options);
+			} else {
+				//console.log('Tema stored: '+temaStored); 
+			}
+		}
+
+		$(document).ready(function(){
+			if (Notification) {
+				Notification.requestPermission(function(){
+					var options = {
+						body: 'Acá abajo van a ir apareciendo los nombres de las canciones que salen en la radio. Podés desactivar esta función en cualquier momento.',
+						icon: iconPush
+					};
+					var notif = new Notification("¡Gracias por escucharnos!", options);
+					notifications = setInterval(pushNotifications, 5000); 
+				});
+			} else {
+				notifications = setInterval(pushNotifications, 5000); 
+			}
+			datosRadio({sourceDomain: streamingdata});
+			if (estadoRadio === "En el aire") {
+				$('h1#state').html("¡Estamos en vivo!");
+				intervaloActualizacion = setInterval(infoRadio, 5000);
+			} else if (estadoRadio == "Fuera del aire"){ 
+				$('h1#state').html("¡Escuchanos en vivo!"); 
+				$('p#listening').html('Tocá play para escucharnos'); 
+			};
+		});
+		$(window).load(function(){
+			//
+		})
+
+	</script>
+	<script type="text/javascript">
+		var responsive = true; 
+		var menuResponsive = function(){
+			if (responsive) {
+				$('#menu-responsive').css('background-color', 'rgb(0, 255, 0)').css('color', '#000'); 
+				$("ul#nav-principal").css('display', 'block'); 
+				responsive = false; 
+			}
+			else{
+				$('#menu-responsive').css('background-color', 'inherit').css('color', 'inherit'); 
+				$("ul#nav-principal").css('display', 'none'); 
+				responsive = true; 
+			};
+		}
+		
+	</script>
+</head>
+<body>
+	<!-- Contenido de las secciones -->
+	<div id="seccion-programas" class="reveal-modal" data-reveal>
+		<h1>Cargando programa...</h1>
+		<section id="informacion">
+			<div id="conduccion"></div>
+			<div id="horarios"></div>
+			<div id="descripcion"></div>
+		</section>
+		<br/>
+		<div id="mixcloud-embed">Cargando...</div>
+		<a class="close-reveal-modal">&#215;</a>
+	</div>
+	<!-- Contenido de las secciones -->
+	<div id="seccion-ext" class="reveal-modal" data-reveal>
+		<section id="modal-externo">
+			Cargando...
+		</section>
+		<a class="close-reveal-modal">&#215;</a>
+	</div>
+	<header>
+		<div class="contain-to-grid barra-primaria">
+			<nav class="top-bar transparente" data-topbar role="navigation">
+				<ul class="title-area">
+					<li id="inicio" class="name" style="vertical-align: middle;">
+						<div id="brand"></div>
+					</li>
+					<li class="toggle-topbar menu-icon"><a href="#"><span>Menu principal</span></a></li>
+				</ul>
+				<section class="top-bar-section">
+					<ul class="right" id="principal">
+						<li id="programacion"><a href="#" data-reveal-id="seccion-ext">Programacion</a></li>
+						<li id="ranking"><a href="#" data-reveal-id="seccion-ext">Ranking</a></li>
+						<li><a href="http://lantalks.com/">Lantalks</a></li>
+						<li id="contacto"><a href="#" data-reveal-id="seccion-ext">Contacto</a></li>
+					</ul>
+				</section>
+			</nav>
+		</div>
+		<div class="contain-to-grid barra-secundaria">
+			<nav class="top-bar" data-topbar role="navigation">
+				<ul class="title-area">
+					<li class="name"></li>
+					<li class="toggle-topbar menu-icon"><a href="#"><span>Opciones de la radio</span></a></li>
+				</ul>
+
+				<section class="top-bar-section">
+					<!-- Seccion derecha-->
+					<ul class="right">
+						<li class="has-dropdown">
+							<a href="#"><img src="img/spotify.png" style="max-height: 46px;"/></a>
+							<ul class="dropdown" id="playlists">
+								<li><a href="#">Cargando playlists...</a></li>
+							</ul>
+						</li>
+					</ul>
+
+					<!-- Seccion izquierda -->
+					<ul class="left">
+						<li class="has-dropdown">
+							<a href="#">Programas</a>
+							<ul class="dropdown" id="programas">
+								<li><a href="#" data-reveal-id="seccion-programas">Cargando programas...</a></li>
+							</ul>
+						</li>
+						<li class="reproductor"><a href="#">En tu reproductor</a></li>
+					</ul>
+				</section>
+			</nav>
+		</div>
+	</header>
+	<!-- Player -->
+	<main id="reproductor">
+		<div class="row text-center">
+			<div class="medium-12 column">
+				<h1 id="state" style="color: #FFF">Escuchanos en vivo</h1>
+				<p id="listening"><b>Tocá en Play para escucharnos. </p>
+				<div id="headerLiveHolder"></div>
+			</div>
+			<audio id="streaming-loop" preload="auto">
+				<source type="audio/mpeg">
+				Para escuchar la radio tendras que actualizar el navegador. 
+			</audio>
+			<script type="text/javascript">
+				var audio = document.getElementById('streaming-loop');
+			</script>
+			<div class="controles" style="padding-bottom: 20px;">
+				<div class="boton-player" id="reproducir"><i class="fa fa-play fa-lg"></i></div>
+			</div>
+		</div>
+	</main>
+	<!-- Redes sociales -->
+	<main id="contenido">
+		<div id="fb-root"></div>
+			<script>(function(d, s, id) {
+				var js, fjs = d.getElementsByTagName(s)[0];
+				if (d.getElementById(id)) return;
+				js = d.createElement(s); js.id = id;
+				js.src = "//connect.facebook.net/es_LA/sdk.js#xfbml=1&version=v2.5&appId=762915880519089";
+				fjs.parentNode.insertBefore(js, fjs);
+			}(document, 'script', 'facebook-jssdk'));
+			</script>
+		<section id="redes-sociales">
+			<header>
+				<div class="row">
+					<div class="small-12 column"><div id="brand"></div></div>
+				</div>
+			</header>
+			<div class="contain-to-grid transparente">
+				<center>
+					<div class="row">
+						<div class="small-12 medium-6 columns" style="min-height: 600px;">
+							<a class="twitter-timeline"  href="https://twitter.com/loopradiook" data-widget-id="651251212629737472">Tweets by @loopradiook</a>
+							<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+"://platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
+						</div>
+						<div class="small-12 medium-6 columns" style="min-height: 600px;">
+							<div class="fb-page" data-href="https://www.facebook.com/loopradiook" data-width="500" data-small-header="true" data-adapt-container-width="false" data-hide-cover="false" data-show-facepile="false" data-show-posts="true"><div class="fb-xfbml-parse-ignore"><blockquote cite="https://www.facebook.com/radiorocksf"><a href="https://www.facebook.com/radiorocksf">Loop Radio Argentina</a></blockquote></div></div>
+						</div>
+					</div>
+				</center>
+			</div>
+		</section>
+	</main>
+</body>
+<script>
+	$(document).foundation();
+</script>
+<footer>
+	<div class="contain-to-grid" style="background-color: transparent;">
+		<div class="row">
+			<div class="small-12 medium-4 columns" style="vertical-align: middle;"><img src="img/brand-footer.png" style="max-height: 175px;"/></div>
+			<div class="smal-12 medium-8 columns" style="vertical-align: middle;">
+				<p>Loop Radio es una emisora perteneciente a: </p>
+				<p><b>Loop Radio Argentina</b> en sociedad con <b>Lantalks WebMedia</b>. </p>
+				<br />
+				<p>Copyright <span id="año"></span> - Lantalks WebMedia - Santa Fe, Argentina. </p>
+				<script type="text/javascript">
+					var hoy = new Date();
+					var año = hoy.getFullYear();
+					$('#año').html(año).css('font-family', 'inherit');
+				</script>
+			</div>
+		</div>
+	</div>
+	<!--<div class="encuadre">
+	<div id=""></div>
+	<p>Loop Radio es una emisora perteneciente a: Loop Radio Argentina en sociedad con Lantalks WebMedia. </p>
+	<p>Copyright 2015 - Lantalks WebMedia - Santa Fe, Argentina. </p>
+	</div>-->
+</footer>
+</html>
