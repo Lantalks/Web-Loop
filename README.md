@@ -3,6 +3,9 @@ Repositorio del sitio web del medio "Loop Radio", perteneciente a Lantalks WebMe
 
 # Changelogs 
 
+## v2.0.2 
+* Fix: Color theme para Chrome Mobile. 
+
 ## v2.0.1 
 Mantanción del sitio: 
 * Actualización: Widget de Facebook por el cambio del username de la página. 
