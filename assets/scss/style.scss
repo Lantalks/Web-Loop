@@ -1,0 +1,59 @@
+@import 'bootstrap/bootstrap';
+@import 'template/header';
+@import 'template/footer';
+
+@font-face {
+	font-family: 'Circular';
+	font-weight: lighter;
+	font-style: normal;
+	src: url("../fonts/CircularStd-Book.otf") format("opentype");
+}
+
+@font-face {
+	font-family: 'Circular';
+	font-weight: bold;
+	font-style: normal;
+	src: url("../fonts/CircularStd-Medium.otf") format("opentype");
+}
+
+@font-face {
+	font-family: 'Circular';
+	font-weight: normal;
+	font-style: normal;
+	src: url("../fonts/CircularStd-Book.otf") format("opentype");
+}
+
+* {
+	font-family: 'Circular', 'Montserrat', 'Open Sans', Tahoma, Verdana, sans-serif;
+}
+
+html {
+	background-color: black;
+}
+
+section {
+	&#streaming {
+		background-color: #cecac3;
+		color: #001b36;
+		#player-placeholder {
+			background-color: rgba(0, 0, 0, 0.25);
+			border-radius: 100px;
+			margin-bottom: 7px;
+			margin-left: auto;
+			margin-right: auto;
+			height: 54px;
+			max-width: 300px;
+			width: 100%;
+		}
+	}
+	&#socials {
+		background-color: #ff7602;
+		color: black;
+		.placeholder-block {
+			background-color: rgba(0, 0, 0, 0.25);
+			color: transparent;
+			display: block;
+			min-height: 600px;
+		}
+	}
+}

@@ -1,0 +1,15 @@
+footer {
+	background-color: black;
+	color: white;
+	padding: 15px 0px;
+	img {
+		max-height: 134px;
+		max-width: 339px;
+		width: 100%;
+	}
+	#footer-text {
+		align-items: center;
+		display: flex;
+		font-size: 14px;
+	}
+}
